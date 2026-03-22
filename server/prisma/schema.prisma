@@ -1,0 +1,82 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  VISITOR
+  USER
+  ADMIN
+}
+
+enum Theme {
+  HUMAN_RIGHTS
+  ENVIRONMENT
+  HEALTH
+  EDUCATION
+  HUMANITARIAN_AID
+  FREEDOM_OF_PRESS
+}
+
+enum Continent {
+  AFRICA
+  AMERICAS
+  ASIA
+  EUROPE
+  OCEANIA
+}
+
+enum Status {
+  ACTIVE
+  COMPLETED
+  URGENT
+}
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String
+  username     String   @unique
+  avatarUrl    String?
+  role         Role     @default(USER)
+  points       Int      @default(0)
+  level        Int      @default(1)
+  createdAt    DateTime @default(now())
+  pledges      Pledge[]
+}
+
+model Project {
+  id              String    @id @default(uuid())
+  title           String
+  description     String
+  theme           Theme
+  country         String
+  continent       Continent
+  associationName String
+  associationUrl  String
+  imageUrl        String?
+  latitude        Float
+  longitude       Float
+  status          Status    @default(ACTIVE)
+  createdAt       DateTime  @default(now())
+  pledges         Pledge[]
+}
+
+model Pledge {
+  id        String   @id @default(uuid())
+  userId    String
+  projectId String
+  amount    Float
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+}
