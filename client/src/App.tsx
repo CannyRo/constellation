@@ -1,8 +1,14 @@
+import { Routes, Route } from 'react-router'
+
+function Home() {
+  return <h1>Constellation</h1>
+}
+
 function App() {
   return (
-    <div>
-      <h1>Constellation</h1>
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+    </Routes>
   )
 }
 
