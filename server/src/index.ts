@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import { prisma, connectMongoDB } from './config/db'
+import { errorHandler } from './middlewares/errorHandler'
 
 dotenv.config()
 
@@ -14,6 +15,8 @@ app.use(express.json())
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'Constellation API is running' })
 })
+
+app.use(errorHandler) 
 
 const startServer = async () => {
   try {
