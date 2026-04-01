@@ -1,0 +1,178 @@
+/* ============================================================
+   Constellation — Design System
+   client/src/index.css
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Inter:wght@300;400;500&display=swap');
+
+/* ============================================================
+   CSS CUSTOM PROPERTIES
+   ============================================================ */
+
+:root {
+
+  /* --- Colors --- */
+
+  /* Backgrounds */
+  --color-bg-primary:       #0a0815; /* Void    — main background      */
+  --color-bg-card:          #0d0b1a; /* Deep    — card background       */
+  --color-bg-cta:           #1a1033; /* Nebula  — primary button bg     */
+  --color-bg-badge:         #1e1640; /* Eclipse — badge background       */
+
+  /* Borders */
+  --color-border-primary:   #2a2145; /* Dusk    — main borders          */
+  --color-border-secondary: #3c2d6e; /* Twilight — button / badge borders */
+
+  /* Accent */
+  --color-accent:           #7050b8; /* Pulsar  — accent button bg ✓ WCAG AA 5.07:1 */
+  --color-accent-light:     #9b7fe8; /* Stardust — links, icons, stars  */
+  --color-accent-text:      #f0eaff; /* Mist — accent button text ✓ WCAG AA 5.07:1 */
+
+  /* Text */
+  --color-text-primary:     #e8e0ff; /* Aurora  — primary text          */
+  --color-text-secondary:   #9b7fe8; /* Stardust — secondary text       */
+  --color-text-tertiary:    #8272a8; /* Comet — muted / labels  ✓ WCAG AA 4.64:1 */
+
+  /* Highlight */
+  --color-star:             #f5c842; /* Nova    — stars, globe points   */
+
+  /* --- Typography --- */
+
+  --font-serif:  'Cormorant Garamond', Georgia, serif;
+  --font-sans:   'Inter', system-ui, sans-serif;
+
+  /* Font sizes */
+  --text-hero:    42px; /* Logo / hero title   */
+  --text-tagline: 16px; /* Hero tagline        */
+  --text-section: 18px; /* Section headings    */
+  --text-body:    14px; /* Body text           */
+  --text-label:   11px; /* Labels / nav / caps */
+  --text-small:   10px; /* Badges, meta        */
+
+  /* Font weights */
+  --weight-light:   300;
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-semibold: 600;
+
+  /* Letter spacing */
+  --tracking-hero:   0.15em;
+  --tracking-tagline: 0.25em;
+  --tracking-label:  0.08em;
+  --tracking-badge:  0.05em;
+
+  /* Line height */
+  --leading-tight:  1;
+  --leading-body:   1.7;
+
+  /* --- Border radius --- */
+
+  --radius-sm:  8px;
+  --radius-md:  10px;
+  --radius-lg:  14px;
+  --radius-full: 9999px;
+
+  /* --- Spacing (8pt scale) --- */
+
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* --- Transitions --- */
+
+  --transition-fast:   150ms ease;
+  --transition-base:   250ms ease;
+  --transition-slow:   400ms ease;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  font-weight: var(--weight-light);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================
+   FOCUS — Never remove, always style
+   ============================================================ */
+
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-accent-light);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ============================================================
+   TYPOGRAPHY HELPERS
+   ============================================================ */
+
+.text-hero {
+  font-family: var(--font-serif);
+  font-weight: var(--weight-light);
+  font-size: var(--text-hero);
+  letter-spacing: var(--tracking-hero);
+  color: var(--color-text-primary);
+  line-height: var(--leading-tight);
+}
+
+.text-tagline {
+  font-family: var(--font-serif);
+  font-weight: var(--weight-light);
+  font-size: var(--text-tagline);
+  letter-spacing: var(--tracking-tagline);
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+.text-section {
+  font-family: var(--font-sans);
+  font-weight: var(--weight-medium);
+  font-size: var(--text-section);
+  color: var(--color-text-primary);
+}
+
+.text-body {
+  font-family: var(--font-sans);
+  font-weight: var(--weight-light);
+  font-size: var(--text-body);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-body);
+}
+
+.text-label {
+  font-family: var(--font-sans);
+  font-weight: var(--weight-medium);
+  font-size: var(--text-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
