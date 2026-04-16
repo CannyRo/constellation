@@ -1,7 +1,12 @@
 import 'dotenv/config'
 import { PrismaClient } from '../generated/prisma'
 import { PrismaNeon } from '@prisma/adapter-neon'
+import { neonConfig } from '@neondatabase/serverless'
+import ws from 'ws'
 import mongoose from 'mongoose'
+
+// Mandatory with Node.js — because no native WebSocket (unlike the browser)
+neonConfig.webSocketConstructor = ws
 
 const adapter = new PrismaNeon({
   connectionString: process.env.DATABASE_URL!,

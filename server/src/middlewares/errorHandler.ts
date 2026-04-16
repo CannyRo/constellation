@@ -1,18 +1,23 @@
-// À ajouter dans server/src/middlewares/errorHandler.ts
 import { Request, Response, NextFunction } from 'express'
 
+interface AppError extends Error {
+  status?: number
+}
+
 export const errorHandler = (
-  err: Error,
+  err: AppError,
   req: Request,
   res: Response,
   next: NextFunction
 ): void => {
   console.error(err.stack)
 
-  res.status(500).json({
+  const statusCode = err.status ?? 500
+
+  res.status(statusCode).json({
     status: 'error',
-    message: process.env.NODE_ENV === 'production'
-      ? 'Internal server error'  // En prod, on cache les détails
-      : err.message              // En dev, on affiche le vrai message
+    message: statusCode === 500 && process.env.NODE_ENV === 'production'
+      ? 'Internal server error' // If Prod, no detail
+      : err.message,            // If Dev, more details
   })
 }
