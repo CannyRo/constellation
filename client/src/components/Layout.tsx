@@ -1,19 +1,18 @@
 import { Outlet } from 'react-router'
+import Navbar from './Navbar'
 
-function Layout() {
+export default function Layout() {
   return (
     <>
       <header>
-        {/* Navbar à créer en Sprint 2 */}
+        <Navbar />
       </header>
       <main>
-        <Outlet />  {/* Ici s'affiche la page correspondant à la route */}
+        <Outlet />
       </main>
       <footer>
-        {/* Footer à créer en Sprint 5 (pages légales) */}
+        {/* Footer Sprint 5 */}
       </footer>
     </>
   )
 }
-
-export default Layout
