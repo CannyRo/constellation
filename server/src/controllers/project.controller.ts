@@ -4,12 +4,12 @@ import { GetProjectsInput, GetProjectByIdInput, CreateProjectInput, UpdateProjec
 import { asyncHandler } from '../middlewares/asyncHandler'
 
 export const getProjectsHandler = asyncHandler(async (req: Request, res: Response): Promise<void> => {
-  const result = await getProjects(req.query as unknown as GetProjectsInput)
+  const result = await getProjects(req.validatedQuery as unknown as GetProjectsInput)
   res.status(200).json(result)
 })
 
 export const getProjectByIdHandler = asyncHandler(async (req: Request, res: Response): Promise<void> => {
-  const project = await getProjectById(req.params as unknown as GetProjectByIdInput)
+  const project = await getProjectById(req.validatedParams as unknown as GetProjectByIdInput)
   res.status(200).json({ data: project })
 })
 
@@ -19,11 +19,13 @@ export const createProjectHandler = asyncHandler(async (req: Request, res: Respo
 })
 
 export const updateProjectHandler = asyncHandler(async (req: Request, res: Response): Promise<void> => {
-  const project = await updateProject(req.params["id"] as string, req.body as UpdateProjectInput)
+  const id = (req.validatedParams as unknown as GetProjectByIdInput).id
+  const project = await updateProject(id, req.body as UpdateProjectInput)
   res.status(200).json({ data: project })
 })
 
 export const deleteProjectHandler = asyncHandler(async (req: Request, res: Response): Promise<void> => {
-  await deleteProject(req.params['id'] as string)
+  const id = (req.validatedParams as unknown as GetProjectByIdInput).id
+  await deleteProject(id)
   res.status(204).send()
 })

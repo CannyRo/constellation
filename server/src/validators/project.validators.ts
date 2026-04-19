@@ -26,13 +26,25 @@ export const createProjectSchema = z.object({
   status:          z.nativeEnum(Status).default('ACTIVE'),
 })
 
-export type GetProjectsInput = z.infer<typeof getProjectsSchema>
-export type GetProjectByIdInput = z.infer<typeof getProjectByIdSchema>
-export type CreateProjectInput  = z.infer<typeof createProjectSchema>
-
-export const updateProjectSchema = createProjectSchema.partial().refine(
+// For update: all fields optional, but status has no default so {} stays empty
+export const updateProjectSchema = z.object({
+  title:           z.string().trim().min(1).max(100).optional(),
+  description:     z.string().trim().min(1).optional(),
+  theme:           z.nativeEnum(Theme).optional(),
+  country:         z.string().trim().min(1).optional(),
+  continent:       z.nativeEnum(Continent).optional(),
+  associationName: z.string().trim().min(1).optional(),
+  associationUrl:  z.string().trim().url().optional(),
+  imageUrl:        z.string().trim().url().optional(),
+  latitude:        z.number().min(-90).max(90).optional(),
+  longitude:       z.number().min(-180).max(180).optional(),
+  status:          z.nativeEnum(Status).optional(),
+}).refine(
   data => Object.keys(data).length > 0,
   { message: 'At least one field must be provided' }
 )
 
+export type GetProjectsInput = z.infer<typeof getProjectsSchema>
+export type GetProjectByIdInput = z.infer<typeof getProjectByIdSchema>
+export type CreateProjectInput  = z.infer<typeof createProjectSchema>
 export type UpdateProjectInput = z.infer<typeof updateProjectSchema>
