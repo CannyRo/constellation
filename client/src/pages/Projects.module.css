@@ -1,0 +1,191 @@
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-10) var(--space-6);
+}
+
+/* Header */
+.header {
+  margin-bottom: var(--space-8);
+}
+
+.heading {
+  font-family: var(--font-serif);
+  font-weight: var(--weight-light);
+  font-size: 32px;
+  letter-spacing: var(--tracking-hero);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.subheading {
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  font-weight: var(--weight-light);
+  color: var(--color-text-secondary);
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+  padding: var(--space-5);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-lg);
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.filterLabel {
+  font-family: var(--font-sans);
+  font-size: var(--text-label);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+.select {
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-secondary);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  font-weight: var(--weight-light);
+  cursor: pointer;
+  min-width: 180px;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%238272a8' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-3) center;
+  padding-right: var(--space-8);
+}
+
+.select:focus-visible {
+  outline: 2px solid var(--color-accent-light);
+  outline-offset: 2px;
+}
+
+.resetButton {
+  background: transparent;
+  color: var(--color-text-tertiary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-4);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  cursor: pointer;
+  align-self: flex-end;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.resetButton:hover {
+  color: var(--color-text-primary);
+  border-color: var(--color-border-secondary);
+}
+
+.resetButton:focus-visible {
+  outline: 2px solid var(--color-accent-light);
+  outline-offset: 2px;
+}
+
+/* Results count */
+.resultsCount {
+  font-size: var(--text-label);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-5);
+}
+
+/* Error */
+.error {
+  color: #e57373;
+  border: 1px solid #e57373;
+  border-radius: var(--radius-sm);
+  padding: var(--space-4);
+  margin-bottom: var(--space-6);
+  font-size: var(--text-body);
+}
+
+/* Loading */
+.loading {
+  color: var(--color-text-tertiary);
+  font-size: var(--text-body);
+  padding: var(--space-12) 0;
+  text-align: center;
+  letter-spacing: var(--tracking-label);
+}
+
+/* Empty */
+.empty {
+  color: var(--color-text-tertiary);
+  font-size: var(--text-body);
+  padding: var(--space-12) 0;
+  text-align: center;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-5);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+  margin-top: var(--space-10);
+}
+
+.pageButton {
+  background: transparent;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-secondary);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-5);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  cursor: pointer;
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.pageButton:hover:not(:disabled) {
+  border-color: var(--color-accent-light);
+  color: var(--color-accent-light);
+}
+
+.pageButton:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.pageButton:focus-visible {
+  outline: 2px solid var(--color-accent-light);
+  outline-offset: 2px;
+}
+
+.pageInfo {
+  font-size: var(--text-label);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}

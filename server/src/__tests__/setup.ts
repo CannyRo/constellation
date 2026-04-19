@@ -4,6 +4,7 @@ import mongoose from 'mongoose'
 // Clean the DB after each test
 afterEach(async () => {
   await prisma.pledge.deleteMany()
+  await prisma.project.deleteMany()
   await prisma.user.deleteMany()
 })
 
